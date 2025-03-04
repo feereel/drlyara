@@ -1,0 +1,93 @@
+{
+  "name": "drlyara",
+  "displayName": "drlyara",
+  "description": "Drill extension for yara compatability",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/*.yara"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "drlyara", 
+          "title": "drlyara",
+          "icon": "assets/yara.svg" 
+        }
+      ]
+    },
+    "views": {
+      "drlyara": [
+        {
+          "id": "yaraCompiler",
+          "name": "Compiles yara files"
+        }
+      ]
+    },
+    "menus": {
+			"view/title": [
+				{
+					"command": "yaraCompiler.refresh",
+					"when": "view == yaraCompiler",
+					"group": "navigation"
+				}
+			],
+      "view/item/context": [
+        {
+          "command": "yaraCompiler.compile",
+          "when": "view == yaraCompiler",
+          "group": "inline"
+        }
+      ]
+		},
+    "commands": [
+			{
+				"command": "yaraCompiler.refresh",
+				"title": "Refresh",
+				"icon": "resources/refresh.svg"
+			},
+			{
+				"command": "yaraCompiler.compile",
+				"title": "Compile",
+				"icon": "resources/compile.svg"
+			},
+      {
+        "command": "yaraCompiler.openRule",
+        "title": "Open YARA Rule"
+      },
+      {
+        "command": "yaraCompiler.openYaraFile",
+        "title": "Open YARA File"
+      }
+		]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.97.0",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.21.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "axios": "^1.8.1"
+  }
+}
