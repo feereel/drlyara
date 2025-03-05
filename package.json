@@ -3,13 +3,13 @@
   "displayName": "drlyara",
   "description": "Drill extension for yara compatability",
   "publisher": "feereel",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "engines": {
     "vscode": "^1.97.0"
   },
   "repository": {
 		"type": "git",
-		"url": "https://github.com/feereel/drlyara"
+		"url": "https://github.com/ZainChen/vscode-json"
 	},
   "categories": [
     "Other"
