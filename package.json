@@ -3,14 +3,14 @@
   "displayName": "drlyara",
   "description": "Drill extension for yara compatability",
   "publisher": "feereel",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "engines": {
-    "vscode": "^1.97.0"
+    "vscode": "^1.74.0"
   },
   "repository": {
-		"type": "git",
-		"url": "https://github.com/ZainChen/vscode-json"
-	},
+    "type": "git",
+    "url": "https://github.com/ZainChen/vscode-json"
+  },
   "categories": [
     "Other"
   ],
@@ -22,9 +22,9 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "drlyara", 
+          "id": "drlyara",
           "title": "drlyara",
-          "icon": "$(bracket-dot)" 
+          "icon": "$(bracket-dot)"
         }
       ]
     },
@@ -37,23 +37,23 @@
       ]
     },
     "menus": {
-			"view/title": [
-				{
-					"command": "yaraCompiler.refresh",
-					"when": "view == yaraCompiler",
-					"group": "navigation"
-				},
+      "view/title": [
         {
-					"command": "yaraCompiler.compileAllFiles",
-					"when": "view == yaraCompiler",
-					"group": "navigation"
-				},
+          "command": "yaraCompiler.refresh",
+          "when": "view == yaraCompiler",
+          "group": "navigation"
+        },
         {
-					"command": "yaraCompiler.pushRules",
-					"when": "view == yaraCompiler",
-					"group": "navigation"
-				}
-			],
+          "command": "yaraCompiler.compileAllFiles",
+          "when": "view == yaraCompiler",
+          "group": "navigation"
+        },
+        {
+          "command": "yaraCompiler.pushRules",
+          "when": "view == yaraCompiler",
+          "group": "navigation"
+        }
+      ],
       "view/item/context": [
         {
           "command": "yaraCompiler.compileFile",
@@ -61,28 +61,28 @@
           "group": "inline"
         }
       ]
-		},
+    },
     "commands": [
-			{
-				"command": "yaraCompiler.refresh",
-				"title": "Refresh",
-				"icon": "$(refresh)"
-			},
       {
-				"command": "yaraCompiler.compileFile",
-				"title": "Compile Single File",
-				"icon": "$(check)"
-			},
+        "command": "yaraCompiler.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
       {
-				"command": "yaraCompiler.pushRules",
-				"title": "Make request to push rules",
-				"icon": "$(cloud-upload)"
-			},
+        "command": "yaraCompiler.compileFile",
+        "title": "Compile Single File",
+        "icon": "$(check)"
+      },
       {
-				"command": "yaraCompiler.compileAllFiles",
-				"title": "Compile All files",
-				"icon": "$(check-all)"
-			},
+        "command": "yaraCompiler.pushRules",
+        "title": "Make request to push rules",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "yaraCompiler.compileAllFiles",
+        "title": "Compile All files",
+        "icon": "$(check-all)"
+      },
       {
         "command": "yaraCompiler.openRule",
         "title": "Open YARA Rule"
@@ -91,7 +91,7 @@
         "command": "yaraCompiler.openYaraFile",
         "title": "Open YARA File"
       }
-		]
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -104,7 +104,7 @@
   "devDependencies": {
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
-    "@types/vscode": "^1.97.0",
+    "@types/vscode": "^1.74.0",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
     "@vscode/test-cli": "^0.0.10",
