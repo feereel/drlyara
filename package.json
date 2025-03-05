@@ -2,7 +2,8 @@
   "name": "drlyara",
   "displayName": "drlyara",
   "description": "Drill extension for yara compatability",
-  "version": "0.0.1",
+  "publisher": "feereel",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.97.0"
   },
@@ -37,12 +38,22 @@
 					"command": "yaraCompiler.refresh",
 					"when": "view == yaraCompiler",
 					"group": "navigation"
+				},
+        {
+					"command": "yaraCompiler.compileAllFiles",
+					"when": "view == yaraCompiler",
+					"group": "navigation"
+				},
+        {
+					"command": "yaraCompiler.pushRules",
+					"when": "view == yaraCompiler",
+					"group": "navigation"
 				}
 			],
       "view/item/context": [
         {
-          "command": "yaraCompiler.compile",
-          "when": "view == yaraCompiler",
+          "command": "yaraCompiler.compileFile",
+          "when": "view == yaraCompiler && viewItem == yaraFile",
           "group": "inline"
         }
       ]
@@ -53,9 +64,19 @@
 				"title": "Refresh",
 				"icon": "resources/refresh.svg"
 			},
-			{
-				"command": "yaraCompiler.compile",
-				"title": "Compile",
+      {
+				"command": "yaraCompiler.compileFile",
+				"title": "Compile Single File",
+				"icon": "resources/compile.svg"
+			},
+      {
+				"command": "yaraCompiler.pushRules",
+				"title": "Make request to push rules",
+				"icon": "resources/send.svg"
+			},
+      {
+				"command": "yaraCompiler.compileAllFiles",
+				"title": "Compile All files",
 				"icon": "resources/compile.svg"
 			},
       {
