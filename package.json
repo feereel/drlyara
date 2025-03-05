@@ -24,7 +24,7 @@
         {
           "id": "drlyara", 
           "title": "drlyara",
-          "icon": "assets/yara.svg" 
+          "icon": "$(bracket-dot)" 
         }
       ]
     },
@@ -66,22 +66,22 @@
 			{
 				"command": "yaraCompiler.refresh",
 				"title": "Refresh",
-				"icon": "resources/refresh.svg"
+				"icon": "$(refresh)"
 			},
       {
 				"command": "yaraCompiler.compileFile",
 				"title": "Compile Single File",
-				"icon": "resources/compile.svg"
+				"icon": "$(check)"
 			},
       {
 				"command": "yaraCompiler.pushRules",
 				"title": "Make request to push rules",
-				"icon": "resources/send.svg"
+				"icon": "$(cloud-upload)"
 			},
       {
 				"command": "yaraCompiler.compileAllFiles",
 				"title": "Compile All files",
-				"icon": "resources/compile.svg"
+				"icon": "$(check-all)"
 			},
       {
         "command": "yaraCompiler.openRule",
