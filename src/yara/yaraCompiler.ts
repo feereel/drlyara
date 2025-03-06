@@ -1,8 +1,8 @@
 import { spawn } from 'child_process';
-import { findYaraFiles, YaraFile } from './yaraTree';
+import { findYaraFiles, YaraFile, YaraRule } from './yaraTree';
 import * as vscode from 'vscode';
 
-export function compileYaraFile(yaraFile: YaraFile): Promise<string> {
+export async function compileYaraFile(yaraFile: YaraFile): Promise<string> {
     return new Promise((resolve, reject) => {
         const yrProcess = spawn('yr', ['compile', '-o', '/dev/null', "--define", "drlcore_direction=\"inbound\"", yaraFile.filePath]);
 
@@ -21,7 +21,31 @@ export function compileYaraFile(yaraFile: YaraFile): Promise<string> {
     });
 }
 
-export function compileAllYaraFiles(yaraFiles: YaraFile[]): Promise<string> {
+async function checkUniqueRuleNames(yaraFiles: YaraFile[]):  Promise<string[]> {
+    let ruleNames: string[] = []
+    let duplicate: string[]= []
+
+    for (const file of yaraFiles) {
+        const rules = await file.updateYaraRules();
+        for (const rule of rules) {
+            if (ruleNames.includes(rule.label)) {
+                duplicate.push(rule.label);
+            } else {
+                ruleNames.push(rule.label);
+            }
+        }
+    }
+    return Promise.resolve(duplicate);
+}
+
+export async function compileAllYaraFiles(yaraFiles: YaraFile[]): Promise<string> {
+
+    const duplicate = await checkUniqueRuleNames(yaraFiles);
+
+    if (duplicate.length > 0) {
+        return Promise.reject(`Files contains duplicate rule names: ${duplicate}`);
+    }
+
     const compilePromises = yaraFiles.map(file =>
         compileYaraFile(file)
             .catch(error => Promise.reject(error))
